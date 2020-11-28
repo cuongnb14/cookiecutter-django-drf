@@ -248,4 +248,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
+
+    'DEFAULT_PAGINATION_CLASS': '{{cookiecutter.project_slug}}.base.pagination.StandardPagination',
 }
