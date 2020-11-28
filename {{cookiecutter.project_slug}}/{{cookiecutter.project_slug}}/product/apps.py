@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class ProductConfig(AppConfig):
-    name = 'demo.product'
+    name = '{{cookiecutter.project_slug}}.product'
     verbose_name = "Product"
 
     def ready(self):

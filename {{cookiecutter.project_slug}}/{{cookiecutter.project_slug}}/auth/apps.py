@@ -2,8 +2,8 @@ from django.apps import AppConfig
 
 
 class AuthConfig(AppConfig):
-    name = 'demo.auth'
-    label = "demo.auth"
+    name = '{{cookiecutter.project_slug}}.auth'
+    label = "{{cookiecutter.project_slug}}.auth"
     verbose_name = "Auth"
 
     def ready(self):
