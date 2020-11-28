@@ -1,0 +1,91 @@
+variables:
+  DOCKER_REGISTRY: {{cookiecutter.project_slug}}
+  IMAGE_NAME: {{cookiecutter.project_slug}}
+  IMAGE_URL: $DOCKER_REGISTRY/$IMAGE_NAME
+
+stages:
+- lint
+- build
+- deploy
+
+# CI for staging
+# -------------------------------------------------------------------------------
+build_staging:
+  stage: build
+  script:
+  - docker build -t $IMAGE_URL:$IMAGE_TAG --file=Dockerfile .
+
+  # remove old images version keep 2 version
+  - docker images | egrep -e "$IMAGE_URL" | tail -n +3 | awk '{print $3}' | xargs -r docker rmi -f
+  variables:
+    IMAGE_TAG: b1.0.$CI_PIPELINE_ID
+
+  tags:
+  - staging
+  only:
+  - staging
+
+deploy_staging:
+  stage: deploy
+  script:
+  # Stop and delete old container
+  - docker ps | grep $CONTAINER_NAME && docker stop $CONTAINER_NAME
+  - docker rm $CONTAINER_NAME || if [ $? -eq 1 ]; then echo "This container doesn't exists"; fi
+
+  # Start new container
+  - docker run -d -p 8000:8000
+    -v ${CONTAINER_NAME}_logs:/logs
+    -v ${CONTAINER_NAME}_statics:/app/staticfiles
+    -v ${CONTAINER_NAME}_media:/app/media
+    --restart=always
+    --name $CONTAINER_NAME
+    --hostname $CONTAINER_NAME
+    --env-file $ENV_FILE
+    --label "traefik.enable=true"
+    --label "traefik.docker.network=$NETWORK"
+    --label "traefik.http.routers.devapi.rule=Host(\`$DOMAIN\`)"
+    --label "traefik.http.routers.devapi.entrypoints=https"
+    --label "traefik.http.routers.devapi.tls.certresolver=ssl"
+    --label "traefik.http.services.devapi.loadbalancer.server.port=8000"
+    --network $NETWORK
+    $IMAGE_URL:$IMAGE_TAG honcho start -f Procfile
+
+  - docker exec $CONTAINER_NAME python3 manage.py migrate
+  - docker exec $CONTAINER_NAME make collectstatic
+
+  variables:
+    IMAGE_TAG: b1.0.$CI_PIPELINE_ID
+    CONTAINER_NAME: $IMAGE_NAME
+    NETWORK: example-net
+    DOMAIN: dev.example.com
+    ENV_FILE: ./.env.staging
+
+  tags:
+    - staging  
+  only:
+    - staging
+
+# CI for production
+# -------------------------------------------------------------------------------
+build_prod:
+  extends: build_staging
+  tags:
+    - production  
+  only:
+    - master
+  variables:
+    IMAGE_TAG: r1.0.$CI_PIPELINE_ID
+
+deploy_prod:
+  extends: deploy_staging
+  tags:
+    - production  
+  only:
+    - master
+  # when: manual
+  variables:
+    IMAGE_TAG: r1.0.$CI_PIPELINE_ID
+    CONTAINER_NAME: $IMAGE_NAME
+    NETWORK: example-net
+    ENV_FILE: ./.env.prod
+    DOMAIN: example.com
