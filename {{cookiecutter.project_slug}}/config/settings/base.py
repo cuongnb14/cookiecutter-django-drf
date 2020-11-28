@@ -250,4 +250,5 @@ REST_FRAMEWORK = {
     ]
 
     'DEFAULT_PAGINATION_CLASS': '{{cookiecutter.project_slug}}.base.pagination.StandardPagination',
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }

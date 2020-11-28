@@ -11,3 +11,5 @@ class ProductViewSet(viewsets.ModelViewSet):
     """
     serializer_class = serializers.ProductSerializer
     queryset = models.Product.objects.all()
+    filterset_fields = ['name', 'price']
+    ordering_fields = ['price']
