@@ -24,6 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('dashboard/', include(('{{cookiecutter.project_slug}}.dashboard.urls', 'dashboard'), namespace='dashboard')),
+
+    path('v1/', include(('{{cookiecutter.project_slug}}.product.urls', 'product'), namespace='product')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
