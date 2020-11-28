@@ -21,3 +21,5 @@ whitenoise==5.0.1
 
 djangorestframework==3.12.2
 django-filter==2.4.0
+
+djangorestframework-simplejwt==4.6.0
