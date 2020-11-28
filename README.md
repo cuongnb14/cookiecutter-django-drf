@@ -1,16 +1,15 @@
-# cookiecutter-django
+# cookiecutter-django-drf
 
-Powered by Cookiecutter. Cookiecutter Django is a framework for jumpstarting projects quickly.
+Powered by Cookiecutter. Cookiecutter Django DRF is a framework for jumpstarting projects quickly.
 
 ## Introduction
-This cookie cutter is a very simple boilerplate for starting a website using Django, Nginx, Docker, SQLite, coreui theme. It comes with basic project structure and configuration.
+This cookie cutter is a very simple boilerplate for starting a RESTful API using Django, Nginx, Docker, SQLite. It comes with basic project structure and configuration.
 
 ## Features:
 
-- For django 3.0.2
+- For django 3.1.3
 - Docker support using docker-compose
 - SQLite DB
-- Integrate [Coreui v2.1.15](https://github.com/coreui/coreui-free-bootstrap-admin-template/tree/v2.1.15) theme
 
 ### Option
 
@@ -19,5 +18,5 @@ This cookie cutter is a very simple boilerplate for starting a website using Dja
 
 ## Usage
 
-`cookiecutter https://github.com/cuongnb14/cookiecutter-django.git`
+`cookiecutter https://github.com/cuongnb14/cookiecutter-django-drf.git`
 
