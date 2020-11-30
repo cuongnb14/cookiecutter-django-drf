@@ -1,5 +1,4 @@
-# release: python manage.py migrate
-web: gunicorn config.wsgi:application -w 2 -b :8000
+web: gunicorn config.wsgi:application -w 3 --threads=30 --timeout 1800 -b :8000
 {% if cookiecutter.use_celery == "y" -%}
 worker: celery worker --app=config.celery_app --loglevel=info -f logs/celery.log
 # beat: celery --app=config.celery_app beat -s /var/run/celerybeat-schedule --pidfile /celerybeat.pid
