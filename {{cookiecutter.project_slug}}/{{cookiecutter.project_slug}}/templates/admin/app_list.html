@@ -1,0 +1,59 @@
+{% load i18n %}
+<div class="app-bookmark module">
+  <table>
+    <caption>
+      <a href="#" class="section" title="Bookmark" tabindex="0">Bookmarks</a>
+    </caption>
+
+    <tbody>
+
+      <tr class="model-bookmark-item">
+        <th scope="row"><a href="{% url 'admin:user_user_changelist' %}" tabindex="0">Users</a></th>
+        <td></td>
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+
+{% if app_list %}
+{% for app in app_list %}
+<div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
+  <table>
+    <caption>
+      <a href="{{ app.app_url }}" class="section"
+        title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{
+        app.name }}</a>
+    </caption>
+    {% for model in app.models %}
+    <tr class="model-{{ model.object_name|lower }}{% if model.admin_url in request.path %} current-model{% endif %}">
+      {% if model.admin_url %}
+      <th scope="row"><a href="{{ model.admin_url }}" {% if model.admin_url in request.path %} aria-current="page" {%
+          endif %}>{{ model.name }}</a></th>
+      {% else %}
+      <th scope="row">{{ model.name }}</th>
+      {% endif %}
+
+      {% if model.add_url %}
+      <td><a href="{{ model.add_url }}" class="addlink">{% translate 'Add' %}</a></td>
+      {% else %}
+      <td></td>
+      {% endif %}
+
+      {% if model.admin_url and show_changelinks %}
+      {% if model.view_only %}
+      <td><a href="{{ model.admin_url }}" class="viewlink">{% translate 'View' %}</a></td>
+      {% else %}
+      <td><a href="{{ model.admin_url }}" class="changelink">{% translate 'Change' %}</a></td>
+      {% endif %}
+      {% elif show_changelinks %}
+      <td></td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endfor %}
+{% else %}
+<p>{% translate 'You don’t have permission to view or edit anything.' %}</p>
+{% endif %}
