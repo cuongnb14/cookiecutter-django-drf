@@ -1,4 +1,4 @@
-{% load i18n %}
+{% raw %}{% load i18n %}
 <div class="app-bookmark module">
   <table>
     <caption>
@@ -57,3 +57,4 @@
 {% else %}
 <p>{% translate 'You don’t have permission to view or edit anything.' %}</p>
 {% endif %}
+{% endraw %}
