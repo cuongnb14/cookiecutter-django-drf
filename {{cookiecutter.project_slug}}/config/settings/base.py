@@ -89,23 +89,23 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(str(BASE_DIR), 'dbs/db.sqlite3'),
-    }
-}
-
 {%- if cookiecutter.use_postgres == "y" %}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': env('DB_NAME', default='{{cookiecutter.project_slug}}'),
-        'USER': env('DB_USER', default='postgres'),
-        'PASSWORD': env('DB_PASS', default='123456'),
+        'USER': env('DB_USER', default='dev'),
+        'PASSWORD': env('DB_PASS', default='dev'),
         'HOST': env('DB_HOST', default='127.0.0.1'),
         'PORT': env('DB_PORT', default=5432),
     },
+}
+{%- else %}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(str(BASE_DIR), 'dbs/db.sqlite3'),
+    }
 }
 {%- endif %}
 
@@ -170,7 +170,7 @@ if USE_TZ:
     # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-timezone
     CELERY_TIMEZONE = TIME_ZONE
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-broker_url
-CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://127.0.0.1:6377/0")
+CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://:dev@127.0.0.1:6379/1")
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-result_backend
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 # http://docs.celeryproject.org/en/latest/userguide/configuration.html#std:setting-accept_content
