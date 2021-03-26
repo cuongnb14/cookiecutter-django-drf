@@ -259,6 +259,13 @@ REST_FRAMEWORK = {
 
     'DEFAULT_PAGINATION_CLASS': '{{cookiecutter.project_slug}}.base.pagination.StandardPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+
+    'DEFAULT_THROTTLE_CLASSES': [
+        'rest_framework.throttling.ScopedRateThrottle',
+    ],
+    'DEFAULT_THROTTLE_RATES': {
+        'send_email': '1/min',
+    }
 }
 
 SIMPLE_JWT = {
