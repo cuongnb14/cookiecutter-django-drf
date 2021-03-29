@@ -257,6 +257,8 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
 
+    "EXCEPTION_HANDLER": "base.exceptions.handler.custom_exception_handler",
+
     'DEFAULT_PAGINATION_CLASS': '{{cookiecutter.project_slug}}.base.pagination.StandardPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
