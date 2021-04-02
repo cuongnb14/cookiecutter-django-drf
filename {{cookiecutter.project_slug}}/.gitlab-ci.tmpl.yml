@@ -1,7 +1,8 @@
 variables:
+  PROJECT_NAME: {{cookiecutter.project_slug}}
+  
   DOCKER_REGISTRY: {{cookiecutter.project_slug}}
-  IMAGE_NAME: {{cookiecutter.project_slug}}
-  IMAGE_URL: $DOCKER_REGISTRY/$IMAGE_NAME
+  IMAGE_URL: $DOCKER_REGISTRY/$PROJECT_NAME
 
 stages:
 - lint
@@ -55,7 +56,7 @@ deploy_staging:
 
   variables:
     IMAGE_TAG: b1.0.$CI_PIPELINE_ID
-    CONTAINER_NAME: $IMAGE_NAME
+    CONTAINER_NAME: $PROJECT_NAME
     NETWORK: example-net
     DOMAIN: dev.example.com
     ENV_FILE: ./.env.staging
@@ -85,7 +86,7 @@ deploy_prod:
   # when: manual
   variables:
     IMAGE_TAG: r1.0.$CI_PIPELINE_ID
-    CONTAINER_NAME: $IMAGE_NAME
+    CONTAINER_NAME: $PROJECT_NAME
     NETWORK: example-net
     ENV_FILE: ./.env.prod
     DOMAIN: example.com
