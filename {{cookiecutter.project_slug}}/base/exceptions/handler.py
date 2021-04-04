@@ -12,13 +12,11 @@ def custom_exception_handler(exc, context):
         response.data["code"] = exc.default_code
     else:
         data = {
-            "detail": "Ops! Something went wrong",
+            "detail": "Oops! Something went wrong",
+            "code": "unexpected_error"
         }
         if settings.DEBUG:
             data["debug_message"] = str(exc)
-        response = Response({
-            "detail": "Ops! Something went wrong",
-            "debug_message": str(exc)
-        }, status=500)
+        response = Response(data, status=500)
 
     return response
