@@ -27,6 +27,7 @@ urlpatterns = [
 
     path('v1/', include(('{{cookiecutter.project_slug}}.product.urls', 'product'), namespace='product')),
     path('v1/', include(('{{cookiecutter.project_slug}}.auth.urls', 'auth'), namespace='auth')),
+    # APPEND_NEW_APP #
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

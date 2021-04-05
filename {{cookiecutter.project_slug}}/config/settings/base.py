@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     '{{cookiecutter.project_slug}}.user.apps.UserConfig',
     '{{cookiecutter.project_slug}}.product.apps.ProductConfig',
+    # APPEND_NEW_APP #
 ]
 
 MIDDLEWARE = [
