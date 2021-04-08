@@ -52,6 +52,13 @@ INSTALLED_APPS = [
     # APPEND_NEW_APP #
 ]
 
+# Django Admin
+# ------------------------------------------------------------------------------
+MENU_APP_ORDER = ['user']
+MENU_MODEL_ORDER = [
+    
+]
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     {%- if cookiecutter.use_whitenoise == 'y' %}

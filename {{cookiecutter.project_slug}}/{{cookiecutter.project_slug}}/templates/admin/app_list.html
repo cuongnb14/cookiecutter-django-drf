@@ -1,4 +1,6 @@
 {% raw %}{% load i18n %}
+{% load sort_menu_items %}
+
 <div class="app-bookmark module">
   <table>
     <caption>
@@ -17,14 +19,14 @@
 </div>
 
 {% if app_list %}
-{% for app in app_list %}
+{% for app in app_list|sort_apps %}
 <div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
   <table>
     <caption>
       <a href="{{ app.app_url }}" class="section"
         title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</a>
     </caption>
-    {% for model in app.models %}
+    {% for model in app.models|sort_models %}
     <tr class="model-{{ model.object_name|lower }}{% if model.admin_url in request.path %} current-model{% endif %}">
       {% if model.admin_url %}
       <th scope="row"><a href="{{ model.admin_url }}" {% if model.admin_url in request.path %} aria-current="page" {% endif %}>{{ model.name }}</a></th>
