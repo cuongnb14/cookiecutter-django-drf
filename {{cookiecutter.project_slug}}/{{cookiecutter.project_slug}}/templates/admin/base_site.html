@@ -16,24 +16,22 @@
     border: 1px solid #d6d6d6;
   }
 
+  #main {
+    position: relative;
+  }
 
   .toggle-nav-sidebar {
     position: absolute;
-    height: 30px;
+    left: 0;
+    top: -36px;
+    height: 36px;
     border: none;
-    top: 85px;
+    background-color: #79aec8;
+    color: #fff;
   }
 
   .toggle-nav-sidebar:focus {
     outline: none;
-  }
-
-  .main.shifted .toggle-nav-sidebar {
-    left: 278px;
-  }
-
-  .main.shifted>#nav-sidebar {
-    left: 0;
   }
 </style>
 {% endblock %}
