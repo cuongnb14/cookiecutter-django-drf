@@ -50,10 +50,6 @@ def append_params_url(url, params):
     return urlparse.urlunparse(url_parts)
 
 
-def get_age(creation_tsz):
-    return math.ceil((time() - creation_tsz) / 86400)
-
-
 def get_prev_next_link(request):
     current_path = request.get_full_path()
     current_page = int(request.GET.get('page', 1))
