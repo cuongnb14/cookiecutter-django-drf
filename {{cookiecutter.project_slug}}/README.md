@@ -23,7 +23,7 @@
 make remove-all-migrations
 
 # remove all tables in database
-python3 manage.py reset-db
+python3 manage.py reset_db
 
 # show all urls
 python3 manage.py show_urls
