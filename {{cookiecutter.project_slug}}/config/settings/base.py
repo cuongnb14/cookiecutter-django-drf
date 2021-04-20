@@ -224,6 +224,14 @@ LOGGING = {
             'when': 'D',
             'backupCount': 3,
         },
+        'db-file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'filename': LOG_DIR + '/db.log',
+            'formatter': 'verbose',
+            'when': 'D',
+            'backupCount': 3,
+        },
         'django-file': {
             'level': 'WARNING',
             'class': 'logging.handlers.TimedRotatingFileHandler',
@@ -249,6 +257,11 @@ LOGGING = {
             'level': 'INFO',
             'propagate': True,
         },
+        # 'django.db.backends': {
+        #     'handlers': ['db-file'],
+        #     'level': 'DEBUG',
+        #     'propagate': True,
+        # },
     },
 }
 
