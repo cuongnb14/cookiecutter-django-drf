@@ -41,3 +41,8 @@ if env("USE_DOCKER", default="no") == "yes":
     import socket
     hostname, _, ips = socket.gethostbyname_ex(socket.gethostname())
     INTERNAL_IPS += [".".join(ip.split(".")[:-1] + ["1"]) for ip in ips]
+
+# django_extensions
+# ------------------------------------------------------------------------------
+# https://github.com/django-extensions/django-extensions
+INSTALLED_APPS += ["django_extensions"]  # noqa F405

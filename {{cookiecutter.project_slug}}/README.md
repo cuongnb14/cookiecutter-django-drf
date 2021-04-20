@@ -16,3 +16,17 @@
 
 - without docker: `make run`
 
+## Utils commands
+
+```
+# remove all migration files
+make remove-all-migrations
+
+# remove all tables in database
+python3 manage.py reset-db
+
+# show all urls
+python3 manage.py show_urls
+
+
+```
