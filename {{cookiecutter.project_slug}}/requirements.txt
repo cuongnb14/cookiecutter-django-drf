@@ -26,6 +26,10 @@ djangorestframework-simplejwt==4.6.0
 
 django-cors-headers==3.6.0
 
+# linter
+flake8-colors
+flake8
+
 # for local env
 django-debug-toolbar==3.2.1
 django_extensions==3.1.3
