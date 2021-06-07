@@ -6,6 +6,7 @@ honcho==1.0.1
 django-model-utils==4.1.1
 
 redis==3.5.3
+django-redis==5.0.0
 
 {%- if cookiecutter.use_celery == "y" %}
 celery==5.0.5  # pyup: < 5.0  # https://github.com/celery/celery
