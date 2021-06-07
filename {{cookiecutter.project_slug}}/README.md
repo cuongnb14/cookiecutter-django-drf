@@ -16,6 +16,11 @@
 
 - without docker: `make run`
 
+## Create new app
+```
+./startapp.sh <app_name>
+```
+
 ## Utils commands
 
 ```
@@ -27,6 +32,5 @@ python3 manage.py reset_db
 
 # show all urls
 python3 manage.py show_urls
-
 
 ```

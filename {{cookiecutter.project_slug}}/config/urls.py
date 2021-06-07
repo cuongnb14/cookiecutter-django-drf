@@ -23,11 +23,11 @@ urlpatterns = [
     path('', RedirectView.as_view(url="/dashboard/"), name='home'),
     path('admin/', admin.site.urls),
 
-    path('dashboard/', include(('{{cookiecutter.project_slug}}.dashboard.urls', 'dashboard'), namespace='dashboard')),
+    path('dashboard/', include(('{{cookiecutter.project_slug}}.dashboard.urls', '{{cookiecutter.project_slug}}.dashboard'), namespace='dashboard')),
 
-    path('v1/', include(('{{cookiecutter.project_slug}}.product.urls', 'product'), namespace='product')),
-    path('v1/', include(('{{cookiecutter.project_slug}}.auth.urls', 'auth'), namespace='auth')),
-    # APPEND_NEW_APP #
+    path('v1/', include(('{{cookiecutter.project_slug}}.product.urls', '{{cookiecutter.project_slug}}.product'), namespace='product')),
+    path('v1/', include(('{{cookiecutter.project_slug}}.auth.urls', '{{cookiecutter.project_slug}}.auth'), namespace='auth')),
+    # APPEND_NEW_URL #
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
