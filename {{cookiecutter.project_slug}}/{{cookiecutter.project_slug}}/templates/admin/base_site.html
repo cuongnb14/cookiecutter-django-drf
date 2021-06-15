@@ -1,34 +1,33 @@
 {% raw %}{% extends "admin/base_site.html" %}
 {% block extrahead %}
 <style>
-
   /* for default btn */
   .btn {
-      background-color: #ffffff;
-      border-radius: 3px;
-      border: 1px solid #dcdcdc;
-      display: inline-block;
-      cursor: pointer;
-      color: #666666;
-      font-weight: bold;
-      padding: 2px 5px;
-      min-width: 40px;
-      text-decoration: none;
+    background-color: #ffffff;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #666666;
+    font-weight: bold;
+    padding: 2px 5px;
+    min-width: 40px;
+    text-decoration: none;
   }
 
   .btn:focus {
-      border: 1px solid #dcdcdc;
-      outline: #dcdcdc !important;
+    border: 1px solid #dcdcdc;
+    outline: #dcdcdc !important;
   }
 
   .btn:hover {
-      background-color: #f6f6f6;
+    background-color: #f6f6f6;
   }
 
   .btn:active {
-      border: 1px solid #dcdcdc;
-      position: relative;
-      top: 1px;
+    border: 1px solid #dcdcdc;
+    position: relative;
+    top: 1px;
   }
 
   /* for nav sidebar */
@@ -47,22 +46,23 @@
     border: 1px solid #d6d6d6;
   }
 
-  #main {
-    position: relative;
-  }
-
   .toggle-nav-sidebar {
     position: absolute;
-    left: 0;
-    top: -36px;
-    height: 36px;
+    height: 30px;
     border: none;
-    background-color: #79aec8;
-    color: #fff;
+    top: 85px;
   }
 
   .toggle-nav-sidebar:focus {
     outline: none;
+  }
+
+  .main.shifted .toggle-nav-sidebar {
+    left: 278px;
+  }
+
+  .main.shifted>#nav-sidebar {
+    left: 0;
   }
 
   /* for form row */
