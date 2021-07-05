@@ -17,7 +17,7 @@ build_staging:
   - docker build -t $IMAGE_URL:$IMAGE_TAG --file=Dockerfile .
 
   # remove old images version keep 2 version
-  - docker images | egrep -e "$IMAGE_URL" | tail -n +3 | awk '{print $3}' | xargs -r docker rmi -f
+  - docker images | egrep -e "$IMAGE_URL" | tail -n +3 | awk '{print $3}' | xargs -r docker rmi -f || echo 'ignore'
   variables:
     IMAGE_TAG: b1.0.$CI_PIPELINE_ID
 
@@ -49,6 +49,9 @@ deploy_staging:
     --label "traefik.http.routers.devapi.tls.certresolver=ssl"
     --label "traefik.http.services.devapi.loadbalancer.server.port=8000"
     --network $NETWORK
+    --log-driver json-file 
+    --log-opt max-size=100M 
+    --log-opt max-file=3
     $IMAGE_URL:$IMAGE_TAG honcho start -f Procfile
 
   - docker exec $CONTAINER_NAME python3 manage.py migrate
