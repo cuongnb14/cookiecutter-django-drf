@@ -39,7 +39,7 @@ class UserJWTAuthentication(JWTAuthentication):
     """
     def authenticate(self, request):
         try:
-            super().authenticate(request)
+            return super().authenticate(request)
         except InvalidToken as e:  # Convert to standard exceptions
             raise InvalidTokenError(e.detail["detail"])
         except AuthenticationFailed as e:
