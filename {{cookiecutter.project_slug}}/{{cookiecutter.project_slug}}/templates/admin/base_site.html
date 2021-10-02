@@ -1,8 +1,46 @@
 {% raw %}{% extends "admin/base_site.html" %}
 {% block extrahead %}
 <style>
+
+  /* disable dark mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --primary: #79aec8;
+      --primary-fg: #fff;
+
+      --body-fg: #333;
+      --body-bg: #fff;
+      --body-quiet-color: #666;
+      --body-loud-color: #000;
+
+      --breadcrumbs-fg: #c4dce8;
+      --breadcrumbs-bg: var(--primary);
+
+      --link-fg: #447e9b;
+      --link-hover-color: #036;
+      --link-selected-fg: #5b80b2;
+
+      --hairline-color: #e8e8e8;
+      --border-color: #ccc;
+
+      --error-fg: #ba2121;
+
+      --message-success-bg: #dfd;
+      --message-warning-bg: #ffc;
+      --message-error-bg: #ffefef;
+
+      --darkened-bg: #f8f8f8; /* A bit darker than --body-bg */
+      --selected-bg: #e4e4e4; /* E.g. selected table cells */
+      --selected-row: #ffc;
+
+      --close-button-bg: #888; /* Previously #bbb, contrast 1.92 */
+      --close-button-hover-bg: #747474;
+    }
+  }
+
+
   /* for default btn */
-  .btn {
+  .d-btn {
     background-color: #ffffff;
     border-radius: 3px;
     border: 1px solid #dcdcdc;
@@ -15,16 +53,16 @@
     text-decoration: none;
   }
 
-  .btn:focus {
+  .d-btn:focus {
     border: 1px solid #dcdcdc;
     outline: #dcdcdc !important;
   }
 
-  .btn:hover {
+  .d-btn:hover {
     background-color: #f6f6f6;
   }
 
-  .btn:active {
+  .d-btn:active {
     border: 1px solid #dcdcdc;
     position: relative;
     top: 1px;
