@@ -56,7 +56,7 @@ INSTALLED_APPS = [
 # ------------------------------------------------------------------------------
 MENU_APP_ORDER = ['user']
 MENU_MODEL_ORDER = [
-    
+
 ]
 
 MIDDLEWARE = [
@@ -286,7 +286,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
     'DEFAULT_THROTTLE_CLASSES': [
-        'rest_framework.throttling.ScopedRateThrottle',
+        '{{cookiecutter.project_slug}}.base.throttling.CloudflareScopedRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
         'send_email': '1/min',
