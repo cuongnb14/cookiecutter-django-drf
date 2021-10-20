@@ -114,6 +114,124 @@
       margin-right: 0;
     }
   }
+
+  /* menu sidebar */
+  #nav-sidebar {
+    background-color: #303c50;
+    flex: 0 0 225px;
+  }
+
+  .main.shifted .toggle-nav-sidebar {
+    left: 227px;
+  }
+
+  .main > #nav-sidebar + .content {
+    margin-left: 40px;
+  }
+
+  .main.shifted > #nav-sidebar + .content {
+    margin-left: 20px;
+  }
+
+  #nav-sidebar table {
+    width: 100%;
+  }
+
+  #nav-sidebar tbody {
+    display: none;
+  }
+
+  #nav-sidebar tbody tr {
+    padding-left: 10px;
+  }
+
+  #nav-sidebar tbody tr.current-model {
+    background-color: #3b4659;
+  }
+
+  #nav-sidebar .module {
+    margin-bottom: 0
+  }
+
+  #nav-sidebar .module caption {
+    background-color: #303c50;
+    color: #e2e2e2;
+    line-height: 2em;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  #nav-sidebar .module caption:hover {
+    background-color: var(--object-tools-bg);
+    cursor: pointer;
+  }
+
+  #nav-sidebar tr {
+    background-color: #3c4b64;
+  }
+
+  #nav-sidebar tr a {
+    color: #cdcdcd;
+  }
+
+  #nav-sidebar tr th a {
+    padding-left: 10px;
+  }
+
+  #nav-sidebar tr a:focus {
+    text-decoration: none;
+  }
+
+  #nav-sidebar tr td, th {
+    border: none;
+    font-weight: normal;
+    line-height: 1.5em;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    #nav-sidebar {
+      background-color: #212121;
+    }
+
+    #nav-sidebar .module caption {
+      background-color: #212121;
+      color: #6cb6db;
+    }
+
+    #nav-sidebar tr {
+      background-color: #121212;
+    }
+
+    #nav-sidebar tbody tr.current-model {
+      background-color: #1f2c32;
+    }
+
+  }
 </style>
+
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous">
+</script>
+
+<script>
+$(document).ready(function () {
+
+  $('#nav-sidebar caption').click(function (e) {
+    $('#nav-sidebar tbody').hide()
+
+    $(this).next().toggle(0);
+  })
+
+  $('#nav-sidebar caption').each(function () {
+    if (window.location.href.includes($(this).data('app-url'))) {
+      $(this).next().toggle(0);
+    }
+  })
+})
+</script>
+
 {% endblock %}
 {% endraw %}

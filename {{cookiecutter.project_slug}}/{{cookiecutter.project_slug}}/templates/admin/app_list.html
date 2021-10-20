@@ -4,7 +4,7 @@
 <div class="app-bookmark module">
   <table>
     <caption>
-      <a href="#" class="section" title="Bookmark" tabindex="0">Bookmarks</a>
+      <span href="#" class="section" title="Bookmark" tabindex="0">Bookmarks</span>
     </caption>
 
     <tbody>
@@ -23,8 +23,8 @@
 <div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
   <table>
     <caption>
-      <a href="{{ app.app_url }}" class="section"
-        title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</a>
+      <span data-app-url="{{ app.app_url }}" class="section"
+        title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</span>
     </caption>
     {% for model in app.models|sort_models %}
     <tr class="model-{{ model.object_name|lower }}{% if model.admin_url in request.path %} current-model{% endif %}">
