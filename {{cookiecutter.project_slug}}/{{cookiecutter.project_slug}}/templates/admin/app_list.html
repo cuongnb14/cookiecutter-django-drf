@@ -22,8 +22,8 @@
 {% for app in app_list|sort_apps %}
 <div class="app-{{ app.app_label }} module{% if app.app_url in request.path %} current-app{% endif %}">
   <table>
-    <caption>
-      <span data-app-url="{{ app.app_url }}" class="section"
+    <caption data-app-url="{{ app.app_url }}">
+      <span class="section"
         title="{% blocktranslate with name=app.name %}Models in the {{ name }} application{% endblocktranslate %}">{{ app.name }}</span>
     </caption>
     {% for model in app.models|sort_models %}
