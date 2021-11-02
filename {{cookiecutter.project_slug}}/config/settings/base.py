@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# ------------------------------------------------------------------------------
 
 {%- if cookiecutter.use_postgres == "y" %}
 DATABASES = {
@@ -119,6 +119,21 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CACHES
+# ------------------------------------------------------------------------------
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://:dev@127.0.0.1:6379/0",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            # Mimicing memcache behavior.
+            # https://github.com/jazzband/django-redis#memcached-exceptions-behavior
+            "IGNORE_EXCEPTIONS": True,
+        },
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
