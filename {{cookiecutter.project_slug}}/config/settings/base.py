@@ -301,7 +301,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 
     'DEFAULT_THROTTLE_CLASSES': [
-        '{{cookiecutter.project_slug}}.base.throttling.CloudflareScopedRateThrottle',
+        'base.throttling.CloudflareScopedRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
         'send_email': '1/min',
