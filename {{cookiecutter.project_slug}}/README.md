@@ -36,6 +36,15 @@ python3 manage.py show_urls
 
 # Custom admin page
 
+```
+# models.py
+class QuickAction(models.Model):
+    class Meta:
+        verbose_name_plural = 'Quick actions'
+        app_label = 'admin_extension'
+```
+
+
 ## Custom list admin page
 ```
 from base.admin import CustomListPageAdmin
