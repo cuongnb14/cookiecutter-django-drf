@@ -29,3 +29,16 @@ class CustomFormPageAdmin(admin.ModelAdmin):
 
         context["form"] = self.form_class()
         return render(request, 'admin/custom/custom_form.html', context)
+
+
+class CustomListPageAdmin(admin.ModelAdmin):
+    model = None
+
+    def get_urls(self):
+        view_name = '{}_{}_changelist'.format(self.model._meta.app_label, self.model._meta.model_name)
+        return [
+            path('', self.custom_view, name=view_name),
+        ]
+
+    def custom_view(self, request, *args, **kwargs):
+        raise NotImplementedError()
