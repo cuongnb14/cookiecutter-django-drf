@@ -235,26 +235,26 @@ LOGGING = {
     'handlers': {
         'apps-file': {
             'level': 'INFO',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': LOG_DIR + '/apps.log',
             'formatter': 'verbose',
-            'when': 'D',
+            'maxBytes': 10000,
             'backupCount': 3,
         },
         'db-file': {
             'level': 'DEBUG',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': LOG_DIR + '/db.log',
             'formatter': 'verbose',
-            'when': 'D',
+            'maxBytes': 10000,
             'backupCount': 3,
         },
         'django-file': {
             'level': 'WARNING',
-            'class': 'logging.handlers.TimedRotatingFileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': LOG_DIR + '/django.log',
             'formatter': 'verbose',
-            'when': 'D',
+            'maxBytes': 10000,
             'backupCount': 3,
         },
         'console': {
