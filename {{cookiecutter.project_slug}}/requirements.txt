@@ -9,7 +9,8 @@ redis==3.5.3
 django-redis==5.0.0
 
 {%- if cookiecutter.use_celery == "y" %}
-celery==5.0.5  # pyup: < 5.0  # https://github.com/celery/celery
+celery==5.2.1
+flower==1.0.0
 {%- endif %}
 
 {%- if cookiecutter.use_postgres == "y" %}
