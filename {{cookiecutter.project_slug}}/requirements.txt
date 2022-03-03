@@ -1,16 +1,15 @@
-Django==3.2
-django-environ==0.4.5
-gunicorn==19.9.0
-honcho==1.0.1
+Django==4.0.3
+django-environ==0.8.1
+gunicorn==20.1.0
+honcho==1.1.0
 
-django-model-utils==4.1.1
+django-model-utils==4.2.0
 
-redis==3.5.3
-django-redis==5.0.0
+redis==4.1.4
+django-redis==5.2.0
 
 {%- if cookiecutter.use_celery == "y" %}
-celery==5.2.1
-flower==1.0.0
+celery==5.2.3
 {%- endif %}
 
 {%- if cookiecutter.use_postgres == "y" %}
@@ -18,20 +17,20 @@ psycopg2-binary==2.8.6
 {%- endif %}
 
 {%- if cookiecutter.use_whitenoise == "y" %}
-whitenoise==5.0.1
+whitenoise==6.0.0
 {%- endif %}
 
-djangorestframework==3.12.4
-django-filter==2.4.0
+djangorestframework==3.13.1
+django-filter==21.1
 
-djangorestframework-simplejwt==4.6.0
+djangorestframework-simplejwt==5.1.0
 
-django-cors-headers==3.6.0
+django-cors-headers==3.11.0
 
 # linter
 flake8-colors
 flake8
 
 # for local env
-django-debug-toolbar==3.2.1
-django_extensions==3.1.3
+# django-debug-toolbar==3.2.4
+# django_extensions==3.1.5
