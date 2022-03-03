@@ -17,12 +17,12 @@ APPS_DIR = BASE_DIR.path('{{cookiecutter.project_slug}}')
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("DJANGO_SECRET_KEY", default="!!!SET DJANGO_SECRET_KEY!!!")
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='!!!SET DJANGO_SECRET_KEY!!!')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", True)
+DEBUG = env.bool('DEBUG', True)
 
-ALLOWED_HOSTS = ["localhost", "0.0.0.0", "127.0.0.1", "*"]
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', '127.0.0.1', '*']
 
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -109,14 +109,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # CACHES
 # ------------------------------------------------------------------------------
 CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://:dev@127.0.0.1:6379/0",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://:dev@127.0.0.1:6379/0',
+        'OPTIONS': {
+            'CLIENT_CLASS': 'django_redis.client.DefaultClient',
             # Mimicing memcache behavior.
             # https://github.com/jazzband/django-redis#memcached-exceptions-behavior
-            "IGNORE_EXCEPTIONS": True,
+            'IGNORE_EXCEPTIONS': True,
         },
     }
 }
@@ -180,12 +180,12 @@ MEDIA_ROOT = BASE_DIR('media')
 if USE_TZ:
     CELERY_TIMEZONE = TIME_ZONE
 
-CELERY_BROKER_URL = env("CELERY_BROKER_URL", default="redis://:dev@127.0.0.1:6379/1")
+CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://:dev@127.0.0.1:6379/1')
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL
 
-CELERY_ACCEPT_CONTENT = ["json"]
-CELERY_TASK_SERIALIZER = "json"
-CELERY_RESULT_SERIALIZER = "json"
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 CELERY_IGNORE_RESULT = True
 
 # TODO: set to whatever value is adequate in your circumstances
@@ -195,12 +195,14 @@ CELERY_RESULT_EXPIRES = 24 * 60 * 60  # 1 day
 
 CELERY_WORKER_PREFETCH_MULTIPLIER = 4
 
-CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 {%- endif %}
 # Config Logging
 # ------------------------------------------------------------------------------
-LOG_DIR = env("LOG_DIR", default=str(BASE_DIR.path('logs')))
+
+
+LOG_DIR = env('LOG_DIR', default=str(BASE_DIR.path('logs')))
 
 LOGGING = {
     'version': 1,
@@ -279,7 +281,7 @@ REST_FRAMEWORK = {
         '{{cookiecutter.project_slug}}.auth.authentication.UserJWTAuthentication',
     ),
 
-    "EXCEPTION_HANDLER": "base.exceptions.handler.custom_exception_handler",
+    'EXCEPTION_HANDLER': 'base.exceptions.handler.custom_exception_handler',
 
     'DEFAULT_PAGINATION_CLASS': 'base.pagination.StandardPagination',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
