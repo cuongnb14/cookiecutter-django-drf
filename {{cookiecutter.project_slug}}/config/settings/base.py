@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'django_filters',
 
     '{{cookiecutter.project_slug}}.user.apps.UserConfig',
     '{{cookiecutter.project_slug}}.product.apps.ProductConfig',
