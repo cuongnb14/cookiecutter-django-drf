@@ -17,10 +17,6 @@ redis==4.1.4
 celery==5.2.3
 {%- endif %}
 
-{%- if cookiecutter.use_postgres == "y" %}
-psycopg2-binary==2.8.6
-{%- endif %}
-
 ipython
 gunicorn==20.1.0
 honcho==1.1.0
@@ -28,7 +24,3 @@ honcho==1.1.0
 # linter
 flake8-colors
 flake8
-
-# for local env
-# django-debug-toolbar==3.2.4
-# django_extensions==3.1.5
