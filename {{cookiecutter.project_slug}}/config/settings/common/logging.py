@@ -1,4 +1,4 @@
-from ..base import BASE_DIR
+from ..base import env, BASE_DIR
 LOG_DIR = env('LOG_DIR', default=str(BASE_DIR.path('logs')))
 
 LOGGING = {

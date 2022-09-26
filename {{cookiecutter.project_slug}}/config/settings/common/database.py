@@ -1,4 +1,6 @@
-from ..base import env
+from ..base import env, BASE_DIR
+import os
+
 
 {%- if cookiecutter.use_postgres == "y" %}
 DATABASES = {
