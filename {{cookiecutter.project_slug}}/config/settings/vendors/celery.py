@@ -1,8 +1,7 @@
 {% if cookiecutter.use_celery == 'y' -%}
 # Celery
 # ------------------------------------------------------------------------------
-if USE_TZ:
-    CELERY_TIMEZONE = TIME_ZONE
+CELERY_TIMEZONE = 'UTC'
 
 CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='redis://:dev@127.0.0.1:6379/1')
 CELERY_RESULT_BACKEND = CELERY_BROKER_URL

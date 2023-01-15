@@ -35,7 +35,7 @@ services:
     #     #     - ./:/app
     #     hostname: {{cookiecutter.project_slug}}
     #     environment:
-    #         DJANGO_SETTINGS_MODULE: 'config.settings.base'
+    #         DJANGO_SETTINGS_MODULE: 'config.settings'
     #     # command: /usr/local/bin/gunicorn config.wsgi:application -w 2 -b :8000
     #     # command: python3 manage.py runserver 0.0.0.0:8000
     #     labels:
@@ -69,6 +69,6 @@ services:
         hostname: redis
         container_name: redis
         environment:
-            - REDIS_PASSWORD=dev
+            - REDIS_PASS=dev
         volumes:
             - 'redis-data:/bitnami/redis/data'
