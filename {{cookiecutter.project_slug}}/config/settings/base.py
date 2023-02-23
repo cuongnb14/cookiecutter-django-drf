@@ -25,7 +25,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
 
-    '{{cookiecutter.project_slug}}.user',
+    '{{cookiecutter.project_slug}}.users',
     '{{cookiecutter.project_slug}}.product',
     # APPEND_NEW_APP #
 ]
