@@ -19,7 +19,7 @@ build_staging:
   # remove old images version keep 2 version
   - docker images | egrep -e "$IMAGE_URL" | tail -n +3 | awk '{print $3}' | xargs -r docker rmi -f || echo 'ignore'
   variables:
-    IMAGE_TAG: b1.0.$CI_PIPELINE_ID
+    IMAGE_TAG: v1.0.$CI_PIPELINE_ID
 
   tags:
   - staging
@@ -30,7 +30,7 @@ deploy_staging:
   stage: deploy
   script:
   # Stop and delete old container
-  - docker ps | grep $CONTAINER_NAME && docker stop $CONTAINER_NAME
+  - docker ps | grep $CONTAINER_NAME && docker stop $CONTAINER_NAME || echo 'Ignore'
   - docker rm $CONTAINER_NAME || if [ $? -eq 1 ]; then echo "This container doesn't exists"; fi
 
   # Start new container
@@ -41,7 +41,7 @@ deploy_staging:
     --restart=always
     --name $CONTAINER_NAME
     --hostname $CONTAINER_NAME
-    --env-file $ENV_FILE
+    --env STAGE=$STAGE
     --label "traefik.enable=true"
     --label "traefik.docker.network=$NETWORK"
     --label "traefik.http.routers.devapi.rule=Host(\`$DOMAIN\`)"
@@ -58,11 +58,11 @@ deploy_staging:
   - docker exec $CONTAINER_NAME make collectstatic
 
   variables:
-    IMAGE_TAG: b1.0.$CI_PIPELINE_ID
+    IMAGE_TAG: v1.0.$CI_PIPELINE_ID
     CONTAINER_NAME: $PROJECT_NAME
-    NETWORK: example-net
-    DOMAIN: dev.example.com
-    ENV_FILE: ./.env.staging
+    NETWORK: traefik-net
+    DOMAIN: example.com
+    STAGE: staging
 
   tags:
     - staging  
@@ -78,7 +78,7 @@ build_prod:
   only:
     - master
   variables:
-    IMAGE_TAG: r1.0.$CI_PIPELINE_ID
+    IMAGE_TAG: v1.0.$CI_PIPELINE_ID
 
 deploy_prod:
   extends: deploy_staging
@@ -88,8 +88,8 @@ deploy_prod:
     - master
   # when: manual
   variables:
-    IMAGE_TAG: r1.0.$CI_PIPELINE_ID
+    IMAGE_TAG: v1.0.$CI_PIPELINE_ID
     CONTAINER_NAME: $PROJECT_NAME
-    NETWORK: example-net
-    ENV_FILE: ./.env.prod
+    NETWORK: traefik-net
     DOMAIN: example.com
+    STAGE: prod
