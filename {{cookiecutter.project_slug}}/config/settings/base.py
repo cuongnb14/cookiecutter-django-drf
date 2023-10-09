@@ -14,6 +14,8 @@ env.read_env(str(BASE_DIR.path('config').path('environments').path(f'{STAGE.lowe
 DEBUG = env.bool('DEBUG', True)
 
 INSTALLED_APPS = [
+    'fontawesomefree',
+    'admin_extended',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
