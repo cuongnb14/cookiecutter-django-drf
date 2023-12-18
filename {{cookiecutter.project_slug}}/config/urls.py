@@ -5,12 +5,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-    path('', RedirectView.as_view(url='/dashboard/'), name='home'),
+    path('', RedirectView.as_view(url='/dashboard/'), name='admin'),
     path('admin/', admin.site.urls),
 
-    path('dashboard/', include(('{{cookiecutter.project_slug}}.dashboard.urls', '{{cookiecutter.project_slug}}.dashboard'), namespace='dashboard')),
-
-    path('v1/', include(('{{cookiecutter.project_slug}}.product.urls', '{{cookiecutter.project_slug}}.product'), namespace='product')),
     path('v1/', include(('{{cookiecutter.project_slug}}.auth.urls', '{{cookiecutter.project_slug}}.auth'), namespace='auth')),
     # APPEND_NEW_URL #
 ]

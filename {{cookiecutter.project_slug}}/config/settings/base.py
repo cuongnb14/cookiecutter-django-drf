@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django_filters',
 
     '{{cookiecutter.project_slug}}.users',
-    '{{cookiecutter.project_slug}}.product',
     # APPEND_NEW_APP #
 ]
 
