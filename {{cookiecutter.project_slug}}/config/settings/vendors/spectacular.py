@@ -14,6 +14,9 @@ SPECTACULAR_SETTINGS = {
         'name': 'Developer',
         'email': 'demo@demo.com'
     },
+    'SWAGGER_UI_SETTINGS': {
+        "filter": True,
+    },
     'SERVE_PERMISSIONS': ['rest_framework.permissions.IsAdminUser'],
     'SERVE_AUTHENTICATION': ['rest_framework.authentication.SessionAuthentication'],
     # 'POSTPROCESSING_HOOKS': [
