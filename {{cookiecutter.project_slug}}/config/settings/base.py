@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'corsheaders',
     'django_filters',
+    'drf_spectacular',
 
     '{{cookiecutter.project_slug}}.users',
     # APPEND_NEW_APP #
