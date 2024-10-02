@@ -28,7 +28,8 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_spectacular',
 
-    '{{cookiecutter.project_slug}}.users',
+    '{{cookiecutter.project_slug}}.core.users',
+    '{{cookiecutter.project_slug}}.core.auth',
     # APPEND_NEW_APP #
 ]
 

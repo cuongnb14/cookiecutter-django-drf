@@ -1,9 +1,10 @@
 from django.apps import AppConfig
 
 
-class UsersConfig(AppConfig):
-    name = '{{cookiecutter.project_slug}}.users'
-    verbose_name = "Users"
+class AuthConfig(AppConfig):
+    name = '{{cookiecutter.project_slug}}.core.auth'
+    label = "{{cookiecutter.project_slug}}.core.auth"
+    verbose_name = "Auth"
 
     def ready(self):
         """Override this to put in:
