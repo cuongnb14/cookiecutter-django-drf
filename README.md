@@ -7,7 +7,7 @@ This cookie cutter is a very simple boilerplate for starting a RESTful API using
 
 ## Features:
 
-- For django 4.0, djangorestframework 3.13.1
+- For django 5.x, djangorestframework 3.13.1
 - Implement django_filter
 - Implement auth by djangorestframework-simplejwt
 - Docker support using docker-compose
@@ -15,7 +15,7 @@ This cookie cutter is a very simple boilerplate for starting a RESTful API using
 
 ### Option
 
-- celery
+- dramatiq
 - postgres
 - whitenoise
 
