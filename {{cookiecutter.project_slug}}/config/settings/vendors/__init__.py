@@ -1,4 +1,6 @@
-from .celery import *
+{% if cookiecutter.use_dramatiq == 'y' -%}
+from .dramatiq import *
+{%- endif %}
 from .cors import *
 from .debug_toolbar import *
 from .django_extensions import *

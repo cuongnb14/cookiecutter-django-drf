@@ -1,6 +1,5 @@
 django: gunicorn config.wsgi:application -w 3 --threads=30 --timeout 1800 -b :8000
-{% if cookiecutter.use_celery == "y" -%}
-celery_worker: celery --app=config.celery_app worker --loglevel=info -f logs/celery.log
-# celery_beat: celery --app=config.celery_app beat --loglevel=info
-# celery_flower: celery --app=config.celery_app flower  --address=0.0.0.0 --port=5566 --basic_auth=flower:123456
+{% if cookiecutter.use_dramatiq == "y" -%}
+worker: python3 manage.py rundramatiq --processes 2 --threads 10 --queues default low high
+# scheduler: python3 manage.py run_scheduler
 {%- endif %}

@@ -30,9 +30,9 @@ SUCCESS = "\x1b[1;32m [SUCCESS]: "
 
 DEBUG_VALUE = "debug"
 
-def remove_celery_files():
+def remove_dramatiq_files():
     file_names = [
-        os.path.join("config", "celery_app.py"),
+        os.path.join("config", "settings", "vendors", "dramatiq.py"),
         # os.path.join("{{ cookiecutter.project_slug }}", "users", "tasks.py"),
     ]
     for file_name in file_names:
@@ -228,8 +228,8 @@ def remove_drf_starter_files():
 def main():
     set_flags_in_settings_files()
     
-    if "{{ cookiecutter.use_celery }}".lower() == "n":
-        remove_celery_files()
+    if "{{ cookiecutter.use_dramatiq }}".lower() == "n":
+        remove_dramatiq_files()
 
 if __name__ == "__main__":
     main()

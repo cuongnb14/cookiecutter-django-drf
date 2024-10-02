@@ -1,8 +1,8 @@
 -r base.txt
 
-django-debug-toolbar==3.2.4
+django-debug-toolbar==4.4.6
 django_extensions==3.1.5
 {%- if cookiecutter.use_postgres == "y" %}
-psycopg2-binary==2.8.6
+psycopg
 {%- endif %}
 

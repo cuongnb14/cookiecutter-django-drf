@@ -5,7 +5,7 @@ import os
 {%- if cookiecutter.use_postgres == "y" %}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': env('DB_NAME', default='{{cookiecutter.project_slug}}'),
         'USER': env('DB_USER', default='dev'),
         'PASSWORD': env('DB_PASS', default='dev'),
