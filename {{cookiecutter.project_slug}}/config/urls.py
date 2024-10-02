@@ -9,7 +9,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/admin/'), name='admin'),
     path('admin/', admin.site.urls),
 
-    path('v1/', include('{{cookiecutter.project_slug}}.auth.urls')),
+    path('v1/', include('{{cookiecutter.project_slug}}.core.authz.urls')),
     # APPEND_NEW_URL #
 ]
 

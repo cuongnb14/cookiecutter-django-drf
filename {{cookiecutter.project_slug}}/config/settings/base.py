@@ -29,7 +29,7 @@ INSTALLED_APPS = [
     'drf_spectacular',
 
     '{{cookiecutter.project_slug}}.core.users',
-    '{{cookiecutter.project_slug}}.core.auth',
+    '{{cookiecutter.project_slug}}.core.authz',
     # APPEND_NEW_APP #
 ]
 
