@@ -27,6 +27,9 @@ INSTALLED_APPS = [
     'corsheaders',
     'django_filters',
     'drf_spectacular',
+    {%- if cookiecutter.use_dramatiq == "y" %}
+    'django_dramatiq',
+    {%- endif %}
 
     '{{cookiecutter.project_slug}}.core.users',
     '{{cookiecutter.project_slug}}.core.authz',

@@ -1,6 +1,1 @@
 -r base.txt
-
-{%- if cookiecutter.use_postgres == "y" %}
-psycopg
-{%- endif %}
-
