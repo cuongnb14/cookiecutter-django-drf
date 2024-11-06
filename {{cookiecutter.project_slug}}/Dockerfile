@@ -1,8 +1,8 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ENV REFRESHED_AT=2024-03-22
-ENV LANG en_US.UTF-8
-ENV PYTHONUNBUFFERED 1
+ENV LANG=en_US.UTF-8
+ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update -qq
 RUN apt-get install locales && locale-gen en_US.UTF-8
