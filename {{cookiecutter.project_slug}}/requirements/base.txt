@@ -30,7 +30,7 @@ honcho==1.1.0
 flake8-colors
 flake8
 
-drf-spectacular==0.22.1
+drf-spectacular==0.28.0
 
 git+https://github.com/cuongnb14/django-admin-extended.git@v5.1.1#egg=django-admin-extended
 
