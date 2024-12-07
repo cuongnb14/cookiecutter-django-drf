@@ -6,7 +6,7 @@ REST_FRAMEWORK = {
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        '{{cookiecutter.project_slug}}.core.authz.authentication.UserJWTAuthentication',
+        '{{cookiecutter.project_slug}}.core.authx.authentication.UserJWTAuthentication',
     ),
 
     'EXCEPTION_HANDLER': 'common.exceptions.handler.custom_exception_handler',

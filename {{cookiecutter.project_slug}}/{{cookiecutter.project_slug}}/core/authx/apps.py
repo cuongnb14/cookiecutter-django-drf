@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class AuthzConfig(AppConfig):
-    name = '{{cookiecutter.project_slug}}.core.authz'
+class AuthxConfig(AppConfig):
+    name = '{{cookiecutter.project_slug}}.core.authx'
     verbose_name = "Auth"
 
     def ready(self):

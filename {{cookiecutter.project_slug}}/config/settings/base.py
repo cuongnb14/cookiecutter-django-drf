@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     {%- endif %}
 
     '{{cookiecutter.project_slug}}.core.users',
-    '{{cookiecutter.project_slug}}.core.authz',
+    '{{cookiecutter.project_slug}}.core.authx',
     # APPEND_NEW_APP #
 ]
 
