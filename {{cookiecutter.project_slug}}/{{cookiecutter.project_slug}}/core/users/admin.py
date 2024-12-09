@@ -1,51 +1,33 @@
-from django import forms
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as AuthUserAdmin
-from django.contrib.auth.forms import UserChangeForm, UserCreationForm
+from django.contrib.auth import admin as auth_admin
+from django.utils.translation import gettext_lazy as _
+
+from .forms import UserAdminChangeForm
+from .forms import UserAdminCreationForm
 from .models import User
 
 
-class MyUserChangeForm(UserChangeForm):
-    class Meta(UserChangeForm.Meta):
-        model = User
-
-
-class MyUserCreationForm(UserCreationForm):
-    error_message = UserCreationForm.error_messages.update({
-        'duplicate_username': 'This username has already been taken.'
-    })
-
-    class Meta(UserCreationForm.Meta):
-        model = User
-        fields = ('username', 'first_name', 'last_name',)
-
-    def clean_username(self):
-        username = self.cleaned_data["username"]
-        try:
-            User.objects.get(username=username)
-        except User.DoesNotExist:
-            return username
-        raise forms.ValidationError(self.error_messages['duplicate_username'])
-
-
 @admin.register(User)
-class MyUserAdmin(AuthUserAdmin):
-    form = MyUserChangeForm
-    add_form = MyUserCreationForm
-    # fieldsets = (
-    #         ('User Profile', {'fields': ('name',)}),
-    # ) + AuthUserAdmin.fieldsets
-    list_display = ('id', 'username', 'email', 'date_joined', 'last_login')
-    list_display_links = ('username',)
-    search_fields = ['id', 'email']
-
-    def get_search_results(self, request, queryset, search_term):
-        try:
-            search_term_as_int = int(search_term)
-            queryset = self.model.objects.filter(pk=search_term_as_int)
-            return queryset, False
-        except ValueError:
-            pass
-        queryset, use_distinct = super(MyUserAdmin, self).get_search_results(request, queryset, search_term)
-        return queryset, use_distinct
-
+class UserAdmin(auth_admin.UserAdmin):
+    form = UserAdminChangeForm
+    add_form = UserAdminCreationForm
+    fieldsets = (
+        (None, {"fields": ("username", "password")}),
+        (_("Personal info"), {"fields": ("name", "email")}),
+        (
+            _("Permissions"),
+            {
+                "fields": (
+                    "is_active",
+                    "is_staff",
+                    "is_superuser",
+                    "groups",
+                    "user_permissions",
+                ),
+            },
+        ),
+        (_("Important dates"), {"fields": ("last_login", "date_joined")}),
+    )
+    list_display = ["id", "username", "name", "is_superuser"]
+    search_fields = ["name", "username"]
+    ordering = ("-id",)
