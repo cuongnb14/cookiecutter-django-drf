@@ -5,5 +5,10 @@
     "use_dramatiq": "y",
     "use_postgres": "n",
     "use_whitenoise": "y",
-    "version": "0.1.0"
+    "version": "0.1.0",
+    "_copy_without_render": [
+        "*.hcl",
+        "*.j2",
+        "config/environments/_template.env"
+    ]
 }
